@@ -1,0 +1,5 @@
+build/
+proj_final_prog.egg-info/
+__pycache__/
+
+.env
