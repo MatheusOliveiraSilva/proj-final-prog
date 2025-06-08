@@ -3,4 +3,14 @@ import os
 
 load_dotenv()
 
+# Agent Stuff
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# API Stuff
+APP_NAME = "Agent API"
+APP_VERSION = "0.1.0"
+
+# CORS Stuff
+CORS_ORIGINS = ["*"]
+CORS_METHODS = ["*"]
+CORS_HEADERS = ["*"]
