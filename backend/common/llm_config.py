@@ -22,7 +22,6 @@ class LLMConfig:
     def get_openai_llm(self, llm_config: LLMConfigType) -> BaseChatModel:
         llm_config = self.sanatize_openai_config(llm_config)
 
-        print(llm_config)
         params = {
             "openai_api_key": self.OPENAI_API_KEY
         }
