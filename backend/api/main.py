@@ -11,6 +11,7 @@ sys.path.insert(0, str(backend_dir))
 
 from settings import CORS_ORIGINS, CORS_METHODS, CORS_HEADERS, APP_NAME, APP_VERSION
 from api.routers.agent import router as agent_router
+from api.routers.documents import router as documents_router
 
 app = FastAPI(
     title=APP_NAME,
@@ -27,6 +28,7 @@ app.add_middleware(
 )
 
 app.include_router(agent_router)
+app.include_router(documents_router)
 
 @app.get("/status")
 def check_status():
