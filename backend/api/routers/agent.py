@@ -28,10 +28,10 @@ def parse_chat_history(chat_history: List[tuple[str, str]]) -> List[BaseMessage]
 
     parsed_chat_history = []
     for message in chat_history:
-        if message[0] == "user":
-            parsed_chat_history.append(HumanMessage(content=message[1]))
-        elif message[0] == "assistant":
-            parsed_chat_history.append(AIMessage(content=message[1]))
+        if message.role == "user":
+            parsed_chat_history.append(HumanMessage(content=message.content))
+        elif message.role == "assistant":
+            parsed_chat_history.append(AIMessage(content=message.content))
     return parsed_chat_history
 
 @router.post("/chat")

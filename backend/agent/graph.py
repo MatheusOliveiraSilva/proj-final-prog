@@ -30,6 +30,10 @@ class Agent:
             agent_input,
             stream_mode="messages"
         ):
-    
-            yield f"data: {data}\n\n"
+            obj = {
+                "content": data[0],
+                "metadata": data[1]
+            }
+            
+            yield f"data: {obj}\n\n"
 
