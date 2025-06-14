@@ -73,15 +73,20 @@ class DocumentSearch:
             # Format results for easier consumption
             formatted_results = []
             for result in results:
-                formatted_result = {
+                # Extract chunk information
+                chunk_info = {
                     'document_id': result['id'],
                     'score': result['score'],
                     'title': result['metadata'].get('title', 'Unknown'),
                     'content': result['metadata'].get('content', ''),
                     'source': result['metadata'].get('source', 'Unknown'),
+                    'original_document_id': result['metadata'].get('original_document_id', result['id']),
+                    'chunk_index': result['metadata'].get('chunk_index', 0),
+                    'total_chunks': result['metadata'].get('total_chunks', 1),
+                    'chunk_size': result['metadata'].get('chunk_size', len(result['metadata'].get('content', ''))),
                     'metadata': result['metadata']
                 }
-                formatted_results.append(formatted_result)
+                formatted_results.append(chunk_info)
             
             return formatted_results
             
@@ -101,8 +106,10 @@ if __name__ == "__main__":
     for i, doc in enumerate(results, 1):
         print(f"{i}. {doc['title']}")
         print(f"   Score: {doc['score']:.3f}")
+        print(f"   Chunk: {doc['chunk_index'] + 1}/{doc['total_chunks']} ({doc['chunk_size']} chars)")
         print(f"   Content: {doc['content'][:100]}...")
         print(f"   Source: {doc['source']}")
+        print(f"   Document ID: {doc['original_document_id']}")
         print("-" * 50)
     
     print("\n=== Search in specific namespace ===")
@@ -112,6 +119,8 @@ if __name__ == "__main__":
     for i, doc in enumerate(results_filtered, 1):
         print(f"{i}. {doc['title']}")
         print(f"   Score: {doc['score']:.3f}")
+        print(f"   Chunk: {doc['chunk_index'] + 1}/{doc['total_chunks']} ({doc['chunk_size']} chars)")
         print(f"   Content: {doc['content'][:100]}...")
         print(f"   Source: {doc['source']}")
+        print(f"   Document ID: {doc['original_document_id']}")
         print("-" * 50)

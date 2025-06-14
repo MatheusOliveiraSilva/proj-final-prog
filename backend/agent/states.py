@@ -6,3 +6,4 @@ from common.types import LLMConfigType
 class AgentState(TypedDict):
     messages: Annotated[List, add_messages]
     llm_config: LLMConfigType
+    thread_id: str

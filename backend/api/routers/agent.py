@@ -48,7 +48,8 @@ def stream_agent_chat(agent_request: AgentRequest):
         # 2. Create agent input.
         agent_input: AgentState = {
             "messages": chat_history,
-            "llm_config": agent_request.llm_config.model_dump()
+            "llm_config": agent_request.llm_config.model_dump(),
+            "thread_id": agent_request.thread_id
         }
 
         # 3. Stream response.

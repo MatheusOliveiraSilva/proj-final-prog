@@ -16,4 +16,5 @@ class ChatMessage(BaseModel):
 
 class AgentRequest(BaseModel):
     messages: List[ChatMessage]
+    thread_id: str
     llm_config: Optional[LLMConfig] = None
