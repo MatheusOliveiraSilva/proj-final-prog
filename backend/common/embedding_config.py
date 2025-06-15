@@ -1,0 +1,2 @@
+class EmbeddingConfig:
+    pass
