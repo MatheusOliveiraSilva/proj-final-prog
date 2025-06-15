@@ -162,16 +162,15 @@ backend/
 
 **Para CARREGAR DOCUMENTOS DE PESQUISA faça:**
 1. Acesse a interface web em http://localhost:5173
-2. Clique no botão "Upload de Documentos" 
-3. Selecione um ou múltiplos arquivos (PDF, Word, Excel, PowerPoint)
-4. Aguarde a barra de progresso indicar "Processamento concluído"
-5. Verifique na lista de documentos que seus arquivos aparecem com status "Processado"
+2. Clique no botão "Upload de Documentos" ou jogue o documento na área drag and drop.
+3. Selecione um ou múltiplos arquivos (PDF).
+4. Aguarde o ícone acima da área de chat indicar "Pronto para uso"
 
 **Para FAZER PERGUNTAS SOBRE OS DOCUMENTOS faça:**
 1. Na caixa de chat, digite sua pergunta em linguagem natural
 2. Seja específico: "Quais metodologias de pesquisa são mencionadas?" em vez de "Como pesquisar?"
-3. Pressione Enter ou clique em "Enviar"
-4. Aguarde a resposta ser gerada (pode levar 5-10 segundos)
+3. Pressione Enter ou clique no botão azul de envio.
+4. Aguarde a resposta ser gerada (pode levar 2-5 segundos).
 5. Para perguntas de follow-up, continue na mesma conversa para manter contexto
 
 **Exceções ou potenciais problemas:**
@@ -180,15 +179,14 @@ Se [Documento não foi processado corretamente]
 {
 Então faça: 
 - Verifique se o arquivo não está corrompido
-- Confirme que é um dos formatos suportados (PDF, DOCX, XLSX, PPTX, TXT)
-- Para PDFs escaneados, use OCR antes do upload
-- Tente arquivos menores que 50MB
+- Confirme que é um dos formatos suportados (PDF, DOCX, TXT)
+- Tente arquivos menores.
 }
 
 Se [Resposta está imprecisa ou incompleta]
 {
 Então faça:
-- Reformule a pergunta sendo mais específico
+- Reformule a pergunta sendo mais específico (lembre-se que é baseado em busca por similaridade).
 - Verifique se os documentos contêm informação relevante
 - Tente perguntas em português ou inglês (idiomas otimizados)
 - Divida perguntas complexas em várias perguntas simples
