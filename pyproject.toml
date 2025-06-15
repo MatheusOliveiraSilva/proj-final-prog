@@ -9,15 +9,33 @@ description = "Projeto final de programação para o mestrado."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    # Core framework dependencies
     "langchain",
     "langgraph",
     "langchain_openai",
     "langchain_anthropic",
     "python-dotenv",
+    
+    # API and web dependencies
     "fastapi>=0.104.0",
     "uvicorn[standard]>=0.24.0",
     "pydantic>=2.0.0",
     "requests>=2.31.0",
+    "python-multipart>=0.0.20",  # Required for file uploads
+    
+    # Vector database
+    "pinecone-client>=3.0.0",
+    
+    # Document processing dependencies
+    "PyPDF2>=3.0.1",           # PDF processing
+    "python-docx>=1.1.0",     # Word document processing
+    "pandas>=2.0.0",          # Excel and data processing
+    "xlrd>=2.0.1",            # Legacy Excel files (.xls)
+    "openpyxl>=3.1.0",        # Modern Excel files (.xlsx)
+    "python-pptx>=0.6.21",    # PowerPoint processing
+    "chardet>=5.2.0",         # Character encoding detection
+    "python-magic>=0.4.27",   # File type detection
+    "markdown>=3.5",          # Markdown file processing
 ]
 
 [project.optional-dependencies]
@@ -27,6 +45,9 @@ test = [
     "pytest-mock>=3.10.0",
     "pytest-cov>=4.0.0",
 ]
+
+# Convenience group for full installation
+all = ["proj-final-prog[docs,test]"]
 
 [tool.setuptools.packages.find]
 where = ["."]
