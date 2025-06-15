@@ -1,0 +1,28 @@
+# File processing dependencies for comprehensive document support
+# These are optional but recommended for full functionality
+
+# PDF processing
+PyPDF2>=3.0.1
+
+# Word document processing
+python-docx>=1.1.0
+
+# Excel and other spreadsheet processing
+pandas>=2.0.0
+xlrd>=2.0.1        # For legacy .xls files
+openpyxl>=3.1.0    # For .xlsx files
+
+# PowerPoint processing
+python-pptx>=0.6.21
+
+# Enhanced text processing
+chardet>=5.2.0     # Character encoding detection
+
+# File type detection
+python-magic>=0.4.27  # More accurate MIME type detection (optional)
+
+# Additional format support
+markdown>=3.5      # Markdown file processing
+python-docx2txt>=0.8  # Better .doc support (if needed)
+
+# Install with: pip install -r requirements-file-processing.txt 
