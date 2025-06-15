@@ -14,7 +14,7 @@ Este é um **sistema avançado de inteligência artificial** que permite fazer *
 
 ### Demonstração
 
-(vou por video aqui)
+https://github.com/user-attachments/assets/fac6fb5d-e9d6-41cc-9bc3-6759b6a07069
 
 ---
 
