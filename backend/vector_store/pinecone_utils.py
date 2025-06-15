@@ -15,7 +15,7 @@ class PineconeVectorStore:
     document insertion and similarity search.
     """
     
-    def __init__(self, index_name: str, dimension: int = 3071, metric: str = "dotproduct"):
+    def __init__(self, index_name: str, dimension: int = 3072, metric: str = "dotproduct"):
         """
         Initialize the Pinecone vector store connection.
         

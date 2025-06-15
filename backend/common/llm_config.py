@@ -3,7 +3,7 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from common.types import LLMConfigType
 
 class LLMConfig:
-    provider: str = "azure"
+    provider: str = "openai"
     DEFAULT_OPENAI_MODEL: str = "gpt-4o"
     DEFAULT_TEMPERATURE: float = 0
 
@@ -15,7 +15,12 @@ class LLMConfig:
         """
         Returns the LLM based on the provider.
         """
-        if self.config.get("provider", self.provider) == "openai":
+        provider = self.config.get("provider", self.provider)
+        
+        if provider == "openai":
+            return self.get_openai_llm(self.config)
+        else:
+            # Default to OpenAI if provider is not recognized
             return self.get_openai_llm(self.config)
         # TODO: Add other providers logic here
 
@@ -31,7 +36,7 @@ class LLMConfig:
     
     def sanatize_openai_config(self, llm_config: LLMConfigType) -> dict:
 
-        model_name = llm_config.get("model_name", self.DEFAULT_OPENAI_MODEL)
+        model_name = llm_config.get("model", self.DEFAULT_OPENAI_MODEL)
 
         if model_name.startswith("o"):
             llm_config["temperature"] = 1

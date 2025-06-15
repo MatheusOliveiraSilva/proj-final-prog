@@ -1,12 +1,16 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from typing import List
+import logging
 
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
 from agent.states import AgentState
 from api.schemas.agent_schemas import AgentRequest
 
 from agent.graph import Agent
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 router = APIRouter(
     prefix="/agent",
@@ -42,6 +46,11 @@ def stream_agent_chat(agent_request: AgentRequest):
     try:
         global agent
         
+        # Debug logging
+        logger.info(f"Received agent request with RAW thread_id: '{agent_request.thread_id}'")
+        logger.info(f"Number of messages: {len(agent_request.messages)}")
+        logger.info(f"LLM config: {agent_request.llm_config}")
+        
         # 1. Parse tuple list into list of langchain BaseMessage's.
         chat_history = parse_chat_history(agent_request.messages)
 
@@ -49,13 +58,15 @@ def stream_agent_chat(agent_request: AgentRequest):
         agent_input: AgentState = {
             "messages": chat_history,
             "llm_config": agent_request.llm_config.model_dump(),
-            "thread_id": agent_request.thread_id
+            "thread_id": agent_request.thread_id  # Keep the thread_id exactly as received
         }
+
+        logger.info(f"Created agent_input with thread_id: '{agent_input['thread_id']}'")
 
         # 3. Stream response.
         return StreamingResponse(agent.run_agent_streaming(agent_input), media_type="text/event-stream")
 
     # 4. Handle exceptions.
     except Exception as e:
-        print(f"Error in stream_agent_chat: {e}")
+        logger.error(f"Error in stream_agent_chat: {e}")
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
