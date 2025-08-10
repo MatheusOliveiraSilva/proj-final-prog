@@ -1,16 +1,16 @@
-# 🤖 Chat com Documentos - Sistema de IA Inteligente
+# Chat with Documents - Intelligent AI System
 
-## 📖 Sobre o Projeto
+## About the Project
 
-Este é um sistema avançado de inteligência artificial que permite fazer perguntas em linguagem natural sobre documentos enviados, utilizando tecnologias de ponta como OpenAI, Pinecone, LangChain e LangGraph.
+This is an advanced artificial intelligence system that lets you ask natural language questions about uploaded documents, using state-of-the-art technologies such as OpenAI, Pinecone, LangChain, and LangGraph.
 
-### 🎯 O que o Sistema Faz
+### What the System Does
 
-- 📄 Envio de Documentos: Envie arquivos PDF, Word, Excel, PowerPoint e texto
-- 🧠 Processamento Inteligente: Extrai e analisa o conteúdo automaticamente
-- 💬 Chat Natural: Converse com seus documentos como se estivesse falando com um especialista
-- 🔍 Busca Semântica: Encontra informações relevantes mesmo que você não use as mesmas palavras
-- 🎭 Múltiplas Conversas: Cada conversa mantém seu próprio contexto e documentos
+- Document Upload: Send PDF, Word, Excel, PowerPoint, and text files
+- Intelligent Processing: Automatically extracts and analyzes content
+- Natural Chat: Converse with your documents as if you were speaking to a specialist
+- Semantic Search: Finds relevant information even if you use different words
+- Multiple Conversations: Each conversation keeps its own context and documents
 
 ### Demo
 
@@ -18,103 +18,103 @@ https://github.com/user-attachments/assets/fac6fb5d-e9d6-41cc-9bc3-6759b6a07069
 
 ---
 
-## 🏗️ Arquitetura do Sistema
+## System Architecture
 
-### 📁 Organização do Código
+### Code Organization
 
 ```
 proj-final-prog/
-├── backend/                    # Servidor Python (API + IA)
-│   ├── api/                   # Endpoints REST
-│   │   ├── routers/           # Rotas organizadas por funcionalidade
-│   │   │   ├── agent.py       # Chat com IA
-│   │   │   └── documents.py   # Upload e busca de documentos
-│   │   └── schemas/           # Estruturas de dados da API
-│   ├── agent/                 # Sistema de IA (LangGraph)
-│   │   ├── graph.py           # Orquestração do agente
-│   │   ├── nodes.py           # Lógica de processamento
-│   │   └── agent_toolbox/     # Ferramentas do agente
-│   │       └── tools/         # Busca em documentos
-│   ├── vector_store/          # Integração com Pinecone
-│   ├── utils/                 # Utilidades
-│   │   ├── embeddings.py      # Geração de embeddings (OpenAI)
-│   │   ├── text_chunking.py   # Fragmentação inteligente de texto
-│   │   └── file_processing.py # Processamento de arquivos
-│   └── settings.py            # Configuração
-├── frontend/                   # Interface do usuário (React/TypeScript)
-└── pyproject.toml             # Dependências e configurações
+├── backend/                    # Python server (API + AI)
+│   ├── api/                   # REST endpoints
+│   │   ├── routers/           # Routes organized by feature
+│   │   │   ├── agent.py       # AI chat
+│   │   │   └── documents.py   # Document upload and search
+│   │   └── schemas/           # API data structures
+│   ├── agent/                 # AI system (LangGraph)
+│   │   ├── graph.py           # Agent orchestration
+│   │   ├── nodes.py           # Processing logic
+│   │   └── agent_toolbox/     # Agent tools
+│   │       └── tools/         # Document search
+│   ├── vector_store/          # Pinecone integration
+│   ├── utils/                 # Utilities
+│   │   ├── embeddings.py      # Embedding generation (OpenAI)
+│   │   ├── text_chunking.py   # Smart text chunking
+│   │   └── file_processing.py # File processing
+│   └── settings.py            # Configuration
+├── frontend/                   # User interface (React/TypeScript)
+└── pyproject.toml             # Dependencies and configuration
 ```
 
-### 🔄 Como o Sistema Funciona
+### How the System Works
 
-1. 📤 Upload de Documentos:
-   - O usuário envia um arquivo (PDF, Word, etc.)
-   - O sistema detecta automaticamente o tipo e extrai o conteúdo
-   - O texto é dividido em trechos (chunks) inteligentes
-   - Cada trecho vira um embedding (um vetor matemático)
-   - Os embeddings são armazenados no Pinecone com metadados
+1. Document Upload:
+   - The user uploads a file (PDF, Word, etc.)
+   - The system automatically detects the type and extracts the content
+   - The text is split into smart chunks
+   - Each chunk becomes an embedding (a numerical vector)
+   - Embeddings are stored in Pinecone with metadata
 
-2. 💬 Chat com IA:
-   - O usuário faz uma pergunta
-   - O sistema converte a pergunta em um embedding
-   - Busca por trechos semelhantes no Pinecone
-   - A IA analisa os trechos relevantes e a pergunta
-   - Gera uma resposta contextualizada e natural
+2. Chat with AI:
+   - The user asks a question
+   - The system converts the question into an embedding
+   - It searches for similar chunks in Pinecone
+   - The AI analyzes the relevant chunks and the question
+   - It generates a contextualized, natural response
 
-3. 🧠 Agente Inteligente:
-   - Usa LangGraph para orquestrar o fluxo
-   - OpenAI GPT-4 para processamento de linguagem natural
-   - Ferramentas especializadas para busca em documentos
-   - Contexto isolado por conversa (thread_id)
+3. Intelligent Agent:
+   - Uses LangGraph to orchestrate the flow
+   - OpenAI GPT-4 for natural language processing
+   - Specialized tools for document search
+   - Isolated context per conversation (thread_id)
 
 ---
 
-## 🚀 Instalação Completa (Para Iniciantes)
+## Complete Setup (For Beginners)
 
-### Pré-requisitos
+### Prerequisites
 
-Certifique-se de ter instalado:
+Make sure you have installed:
 
-1. Python 3.12+ - [Baixar aqui](https://www.python.org/downloads/)
-2. UV (gerenciador moderno de pacotes Python) - [Instruções de instalação](https://docs.astral.sh/uv/getting-started/installation/)
+1. Python 3.12+ - [Download here](https://www.python.org/downloads/)
+2. UV (modern Python package manager) - [Installation instructions](https://docs.astral.sh/uv/getting-started/installation/)
 
-### 📥 1. Baixar o Projeto
+### 1. Download the Project
 
 ```bash
-# Clonar o repositório
+# Clone the repository
 git clone https://github.com/MatheusOliveiraSilva/proj-final-prog
 cd proj-final-prog
 ```
 
-### ⚙️ 2. Configurar o Backend (Servidor Python)
+### 2. Set Up the Backend (Python Server)
 
 ```bash
-# Entrar na pasta do backend
+# Enter the backend folder
 cd backend
 
-# Instalar dependências com UV (mais rápido que pip)
+# Install dependencies with UV (faster than pip)
 uv pip install -e .
 
-# Voltar para a raiz do projeto
+# Go back to the project root
 cd ..
 ```
 
-### 🎨 3. Configurar o Frontend (Interface)
+### 3. Set Up the Frontend (Interface)
 
-O repositório do frontend está [aqui](https://github.com/MatheusOliveiraSilva/ChatWithDocs-Front). Siga as instruções do README de lá.
+The frontend repository is available [here](https://github.com/MatheusOliveiraSilva/ChatWithDocs-Front). Follow the README instructions there.
 
-### 🔑 4. Configurar Variáveis de Ambiente
+### 4. Configure Environment Variables
 
-Crie um arquivo chamado `.env` na pasta `backend/` com o seguinte conteúdo:
+Create a file named `.env` in the `backend/` folder with the following content:
 
 ```bash
-# Abra seu editor de texto e crie backend/.env
-# Cole o conteúdo que será enviado separadamente
+# Open your text editor and create backend/.env
+# Paste the content that will be sent separately
 ```
 
-Importante: As chaves de API (OPENAI_API_KEY, PINECONE_API_KEY, etc.) serão enviadas separadamente para a Professora Clarisse por motivos de segurança. Cole-as no arquivo `.env` que você criou.
+Important: API keys (OPENAI_API_KEY, PINECONE_API_KEY, etc.) will be sent separately to Professor Clarisse for security reasons. Paste them into the `.env` file you created.
 
-### ▶️ 5. Executar o Sistema
+### 5. Run the System
 
 #### Terminal 1 - Backend (API):
 ```bash
@@ -128,78 +128,78 @@ cd frontend
 npm run dev
 ```
 
-### 🌐 6. Acessar o Sistema
+### 6. Access the System
 
-- Interface do usuário: http://localhost:5173
-- API (documentação): http://localhost:8000/docs
+- User interface: http://localhost:5173
+- API (documentation): http://localhost:8000/docs
 
 ---
 
-## 🔧 Tecnologias Utilizadas
+## Technologies Used
 
 ### Backend (Python)
-- LangChain: Framework para aplicações de IA
-- LangGraph: Orquestração de agentes inteligentes
-- OpenAI: Modelos de linguagem (GPT-4) e embeddings
-- Pinecone: Banco vetorial para busca semântica
-- FastAPI: Framework web moderno e rápido
-- PyPDF2: Processamento de arquivos PDF
-- Pandas: Análise de dados (Excel/CSV)
-- python-docx: Processamento de documentos Word
+- LangChain: Framework for AI applications
+- LangGraph: Orchestration of intelligent agents
+- OpenAI: Language models (GPT-4) and embeddings
+- Pinecone: Vector database for semantic search
+- FastAPI: Modern, fast web framework
+- PyPDF2: PDF file processing
+- Pandas: Data analysis (Excel/CSV)
+- python-docx: Word document processing
 
 ### Frontend (TypeScript/React)
-- React: Biblioteca de UI
-- TypeScript: JavaScript com tipagem estática
-- Tailwind CSS: Framework de estilos
-- Server-Sent Events: Streaming de respostas em tempo real
+- React: UI library
+- TypeScript: JavaScript with static typing
+- Tailwind CSS: Styling framework
+- Server-Sent Events: Real-time response streaming
 
-### Infraestrutura
-- UV: Gerenciamento rápido de dependências Python
-- Docker: Conteinerização (opcional)
-- uvicorn: Servidor ASGI para FastAPI
-
----
-
-## 📖 Como Usar o Sistema
-
-### 1. 📤 Enviar Documentos
-- Abra a interface web
-- Clique em "Enviar Documento"
-- Selecione seus arquivos (PDF, Word, Excel, etc.)
-- Aguarde o processamento automático
-
-### 2. 💬 Fazer Perguntas
-- Digite sua pergunta na caixa de chat
-- As perguntas podem ser sobre qualquer conteúdo dos documentos
-- Exemplos:
-  - "Qual é o resumo do documento de IA?"
-  - "Quais são as principais conclusões da pesquisa?"
-  - "Encontre informações sobre machine learning"
-
-### 3. 🎯 Dicas para Melhores Resultados
-- Seja específico: "Quais métricas de desempenho foram mencionadas?" é melhor do que "Como é o desempenho?"
-- Use contexto: "No capítulo sobre redes neurais, qual algoritmo é recomendado?"
-- Pergunte sobre relações: "Qual é a relação entre os conceitos X e Y no documento?"
+### Infrastructure
+- UV: Fast management of Python dependencies
+- Docker: Containerization (optional)
+- uvicorn: ASGI server for FastAPI
 
 ---
 
-## 🤝 Contribuição
+## How to Use the System
 
-Este projeto foi desenvolvido como trabalho final de mestrado. Sugestões e melhorias são bem-vindas!
+### 1. Upload Documents
+- Open the web interface
+- Click "Upload Document"
+- Select your files (PDF, Word, Excel, etc.)
+- Wait for automatic processing
+
+### 2. Ask Questions
+- Type your question in the chat box
+- Questions can be about any content in the documents
+- Examples:
+  - "What is the summary of the AI document?"
+  - "What are the main conclusions of the research?"
+  - "Find information about machine learning"
+
+### 3. Tips for Better Results
+- Be specific: "Which performance metrics were mentioned?" is better than "How is the performance?"
+- Use context: "In the chapter about neural networks, which algorithm is recommended?"
+- Ask about relationships: "What is the relationship between concepts X and Y in the document?"
 
 ---
 
-## 🎓 Projeto Acadêmico
+## Contribution
 
-Este sistema foi desenvolvido como trabalho final de mestrado, demonstrando a aplicação prática de:
+This project was developed as a master's final project. Suggestions and improvements are welcome!
 
-- Processamento de Linguagem Natural (PLN)
+---
+
+## Academic Project
+
+This system was developed as a master's final project, demonstrating the practical application of:
+
+- Natural Language Processing (NLP)
 - Retrieval-Augmented Generation (RAG)
-- Arquiteturas modernas de IA
-- Desenvolvimento full-stack
+- Modern AI architectures
+- Full-stack development
 
-O objetivo é mostrar como as tecnologias de IA podem ser aplicadas para resolver problemas reais de acesso à informação em documentos, criando uma experiência natural e intuitiva para os usuários.
+The goal is to show how AI technologies can be applied to solve real problems of information access in documents, creating a natural and intuitive experience for users.
 
 ---
 
-🚀 Construído com ❤️ usando as tecnologias de IA mais modernas
+Built with modern AI technologies.
